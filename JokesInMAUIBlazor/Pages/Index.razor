@@ -1,0 +1,25 @@
+﻿@page "/"
+
+@using JokesInMAUI.Data
+@inject IJokeFetchingService JokeService
+
+
+@if (joke == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <p>@joke.Setup</p>
+    <p>@joke.Delivery</p>
+}
+
+@code {
+    private Joke joke;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //joke = await JokeService.GetJoke();
+        joke = await JokeService.GetDarkJoke();
+    }
+}
